@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login dfrot</title>
+    <link rel="stylesheet" href="estilo/stylelogin.css">
+    
+</head>
+
+<body>
+    <div class="box-login">
+        <div class="box-img">
+            <div class="boneco"></div>
+            <div class="texto-login"><h2>Login</h2></div>
+        </div>
+        
+        <form action="">
+            <label for="">Usuário</label>
+            <input type="text" id="login">
+            <label for="">Senha</label>
+            <input type="password" id="senha" >
+
+            <a href="#">Esqueceu a senha</a>
+
+            <input type="checkbox">
+            <span>Lembrar-me</span>
+
+            <input type="submit" value="Login" onclick="logar();return false"> 
+            
+
+
+
+
+        </form>
+    </div>
+<script>
+
+    function logar(){
+        var login = document.getElementById('login').value;
+        var senha = document.getElementById('senha').value;
+
+        if(login == "dfrot" && senha == 'dfrot2023'){
+            location.href = "index.html";
+        }else{
+            alert('Usuário ou senha incorretos')
+        }
+
+    }
+</script>
+</body>
+</html>
