@@ -109,7 +109,7 @@ ul li.item-menu a .txt-link{
 
 ul li.item-sair a .txt-link{
     margin-left: 70px;
-    
+   
     transition: .5s;
     opacity: 0;
 }
