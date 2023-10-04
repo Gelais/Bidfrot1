@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="en" http-equiv="Content-Language">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>TRE-GO</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=no, shrink-to-fit=no" name="viewport" />
+    <meta content="Tables are the backbone of almost all web applications." name="description">
+    <meta content="no" name="msapplication-tap-highlight">
+    <link href="./assets/fontawesome/css/all.css" rel="stylesheet">
+    <link href="./estilo/stylecapa.css" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="tile--box">
+        <BR>
+        <center><p class="title--estat">Painel de Dashboards</p></center>
+        <br><br>
+    </div>
+    <div>
+
+        <br><br>
+
+            <div class="searchBox">
+
+                <input class="searchInput"type="text" name="" onkeyup="search_menu()" placeholder="Buscar..." id="searchbar" autocomplete="off">
+                <button class="searchButton" href="#">
+                    <i class="fas fa-search" style="font-size: x-large;"><img class="iconloupe" src="./estilo/imagem/loupe.png" height="30px"  alt=""></i>
+                </button>
+            </div>
+            <br><br><BR></BR>
+            
+        <div class="favorites__section">
+            <h4 class="fav__header" id="meus_favoritos"> &#160 Meus Favoritos</h4>
+            <button class="clear-button" onclick="clearAll()" title="Limpar Favoritos">
+                <img class="clear__img" src="./estilo/imagem/eraser.png">
+            </button>
+        </div>
+        <br>
+
+        <span class="line"></span>
+
+        <div class="favorites_cards" data-my-favorites data-my-favorites-empty="No favorites yet" id="favoriteSection">
+            <br>
+        </div>
+        <span class="line"></span>
+        <br>
+
+        
+          
+
+    <div class="card" id="cartoes">
+
+
+        <div class="card__box" onclick="link('index.html?BI=Checklist')"  id="auditoria">
+            <span onclick="event.stopPropagation()" class="heart" data-add-to-favorite="auditoria">&#10084;</span>
+            <div class="card__icon"><img src="./assets/icons/auditoria.png"></div>
+            <div class="icon__text">
+                <span class="icon__header"><strong>Checklist</strong></span>
+            </div>
+        </div>
+
+        <div class="card__box" onclick="link('index.html?BI=auditoria')" id="auditoria">
+            <span onclick="event.stopPropagation()" class="heart" data-add-to-favorite="auditoria">&#10084;</span>
+            <div class="card__icon"><img src="./assets/icons/auditoria.png"></div>
+            <div class="icon__text">
+                <span class="icon__header"><strong>Auditoria</strong></span>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+
+    <script>
+        function link(i) {
+            window.parent.location.href = i;
+        }
+    </script>
+
+    <script>
+
+        const favoriteButtonAttr = 'data-add-to-favorite';
+        const isFavorite = 'data-is-favorite';
+        const listSelector = '[data-my-favorites]';
+
+        class FavoritesList {
+            constructor () {
+                this.storageName = 'favoritesList';
+                this.list = this.initList();
+            }
+        
+            initList () {
+                if (window.localStorage.getItem(this.storageName)) { 
+                    const list = JSON.parse(window.localStorage.getItem(this.storageName));
+                    updateHtmlList(list);
+                    return list;
+                } else {   
+                    return [];
+                }
+            }
+            
+            initButton(button) {
+                const id = button.getAttribute(favoriteButtonAttr);
+                
+                button.addEventListener('click', (event) => {
+                    const button = event.target;
+                    !inArray(id, this.list) ? this.list.push(id) : removeFromArray(id, this.list);
+                    setState(id, this.list);
+                    this.updateList();
+                    if(button.getAttribute(isFavorite, inArray(id, this.list)) == ''){
+                        document.getElementById(id).firstChild.nextSibling.className = "heart-selected";
+                    }
+                    else{
+                        document.getElementById(id).firstChild.nextSibling.className = "heart";
+                    }
+                })
+                
+                function setState (id, list) {
+                    return button.toggleAttribute(isFavorite, inArray(id, list));                   
+                }
+                
+                setState(id, this.list);
+                if(button.getAttribute(isFavorite, inArray(id, this.list)) == ''){
+                    document.getElementById(id).firstChild.nextSibling.className = "heart-selected";
+                }
+                else{
+                    document.getElementById(id).firstChild.nextSibling.className = "heart";
+                }
+                return button;
+            }
+            
+            updateList() {
+                setLocalStorage(this.storageName, this.list);
+                updateHtmlList(this.list); 
+            }
+        }
+
+        function clearAll() {
+            if (confirm('TEM CERTEZA QUE DESEJA LIMPAR SUA LISTA DE FAVORITOS?')) {
+                window.localStorage.clear();
+                window.location.reload();
+            }
+        }
+
+        function updateHtmlList(list) {
+            if(list.length > 0) {
+                const newList = list.slice(0).reverse();
+                favoritesHTMLElement.innerHTML = '';
+                listItems = document.createElement('section');
+                newList.forEach( item => {
+                    let htmlLi = document.createElement('div');
+                    htmlLi.innerHTML = 
+                                    '<div class="card_fav_box" onclick="link(\'index.html?BI='+removerAcentos(item)+'\')">' + 
+                                        '<p class="card_fav_title">'+title(item)+'</p>'+
+                                '<div class="card_fav_icon">'+
+                                    '<img src="./assets/icons/'+removerAcentos(item)+'.png" '+ icon_size(item) +'>'+
+                                '</div>'+
+                            '<div class="icon_fav_text">'+
+                                '<span class="icon_fav_header"><strong>'+ capitalize(excessao_nomes(item).replace(/-/g, ' ')) +'</strong>'+
+                                    '</span></div></div>';
+                    favoritesHTMLElement.appendChild(htmlLi);
+                });
+            } 
+            else {
+                favoritesHTMLElement.innerHTML = '';
+            }
+
+            function title(item){
+                let card_title = '';
+                let matrix_mandalas = [['litigiosidade-pje', 'processos-antigos-pje', 'atendimento-à-demanda-pje', 'saneamento-g1-pje', 'saneamento-g2-pje', 'metas-nacionais-pje', 'pendentes-líquidos-pje', 'tcl-pje', 'ações-penais-pje'],
+                                       ['registro-de-candidatura', 'prestação-de-contas-asepa', 'gestão-das-urnas', 'perfil-do-eleitorado', 'locais-de-votação'],
+                                       ['execução-de-projetos', 'execução-do-orcamento', 'plano-diretor-de-tic', 'plano-de-capacitações', 'plano-de-contratações', 'portfólio-de-soluções']];
+
+                for (let i = 0; i < matrix_mandalas[0].length; i++) {
+                    if (matrix_mandalas[0][i] == item) {
+                        card_title = 'PJe';
+                    }
+                    else if (matrix_mandalas[1][i] == item) {
+                        card_title = 'ELEIÇÕES';
+                    }
+                    else if (matrix_mandalas[2][i] == item) {
+                        card_title = 'TIC';
+                    } 
+                }
+
+                return card_title;
+            }
+
+            function excessao_nomes(nome){
+                if(nome == 'dft') {nome = "DFT"} 
+
+                else if(nome == 'prêmio-cnj') {nome = "prêmio-CNJ"} 
+
+                else if(nome == 'indicadores-prêmio-cnj') {nome = "indicadores-prêmio-CNJ"}
+
+                else {nome = nome}
+
+                return nome;
+            }
+
+            function icon_size(nome){
+                new_size = '';
+
+                if(nome == 'escola-judiciária') {new_size = 'style="height: 70px; width: auto"';}
+
+                else if(nome == 'data-warehouse') {new_size = 'style="height: 80px; width: auto"';}
+
+                return new_size;
+            }
+        } 
+
+        function removerAcentos(texto) {
+            return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function capitalize(str) {
+            strVal = '';
+            str = str.split(' ');
+            for (var chr = 0; chr < str.length; chr++) {
+                strVal += str[chr].substring(0, 1).toUpperCase() + str[chr].substring(1, str[chr].length) + ' '
+            }
+            return strVal
+        }
+
+        function inArray(element, array) {
+            return array.indexOf(element) != -1;
+        }
+
+        function removeFromArray(element, array) {
+            array.splice(array.indexOf(element), 1); 
+        }
+
+        function setLocalStorage(key, value) {
+            window.localStorage.setItem(key, JSON.stringify(value));
+        }
+
+        const buttons = document.querySelectorAll(`[${favoriteButtonAttr}]`);
+        const favoritesHTMLElement = document.querySelector(listSelector);
+        let favorites = new FavoritesList();  
+        buttons.forEach( button => favorites.initButton(button));
+
+    </script>
+
+</body>
+
+
+<style>
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #0084ff; 
+  border-radius: 10px;
+  visibility:hidden; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+background:  var(--global-primary-color);
+border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background:  var(--global-secondary-color);
+}
+
+</style>
+
+<style>
+* {
+  font-family: Roboto, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+</html>

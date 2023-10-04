@@ -1,0 +1,521 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  :root {
+    --global-primary-color: #f08080;
+    --global-secondary-color: #145706d7;
+    --global-lighter-color: #66ff4027;
+  }
+  
+  .title--estat{
+    font-size: 40px;
+    font-weight: bolder;
+  }
+  
+                  /* ICONE MENSAL LABORATÓRIO DE INOVAÇÕES */
+  
+  .iconemensal {
+    position: flex;
+    display: inline-block;
+    margin-left: 1vh;
+    transition: 0.5s;
+  }
+  
+  .iconemensal .tooltiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: var(--global-primary-color);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 6px;
+    margin-left: 6px;
+    padding: 5px 0;
+    position: flex;
+    z-index: 1;
+    top: 12px;
+    left: 110%;
+    transition: 0.5s;
+    opacity: 0;
+  }
+  
+  /* .iconemensal .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 48%;
+    right: 86.97%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(188, 33, 235, 0.616) transparent transparent;
+  } */
+  
+  .iconemensal:hover .tooltiptext {
+      opacity: 1;
+    visibility: visible;
+  }
+  
+  
+  
+  
+  
+                    /* LUPA DE PESQUISA */
+  
+  .flexbox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .line {
+    border-bottom: 2px dashed #6e6b6b;
+    display: block;
+    margin-left: 10%;
+    margin-right: 10%;
+  }       
+  
+  .searchBox {
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform:  translate(-50%,50%);
+    background: var(--global-primary-color);
+    height: 55px;
+    border-radius: 40px;
+    padding: 3px;
+  }
+  
+  .searchBox:hover > .searchInput {
+    width: 300px;
+    padding: 0 15px;
+    color: #ffffff;
+  }
+  
+  .searchBox:hover > .searchButton {
+  background:rgb(255, 255, 255);
+  color :rgb(0, 0, 0);
+  }
+  
+  .searchButton {
+    color: var(--global-primary-color);
+    float: right;
+    margin-right: 1px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+  
+  .searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    padding: 0;
+    margin-top: 7px;
+    margin-left: 2px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+  }
+  
+  
+  
+          
+                    /* CARTÕES DOS PAINEIS*/        
+         
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card .heart {
+    position: relative;
+    top: 2px;
+    right: -11px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 30px;
+    align-self: flex-end;
+    transition: transform 0.2s ease-in-out;
+  }
+  .card .heart:hover {
+    color: yellow;
+    transform: scale(1.2);
+  }
+  
+  .card .heart-selected {
+    position: relative;
+    top: 2px;
+    right: -11px;
+    color: lightslategray;
+    cursor: pointer;
+    font-size: 30px;
+    align-self: flex-end;
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card .heart-selected:hover {
+    color: lightblue;
+    transform: scale(1.0);
+  }
+  
+  .card__box .icone__datajud{
+    height: 13%;
+    width: 19%;
+    position: absolute;
+    margin-right: 152px;
+    margin-bottom: 210px;
+  }
+  
+  .card__box .icone__eleicoes{
+    height: 16%;
+    width: 18%;
+    position: absolute;
+    margin-right: 140px;
+    margin-bottom: 210px;
+  }
+  
+  .card__box .icone__tic{
+    height: 13%;
+    width: 16%;
+    position: absolute;
+    margin-right: 148px;
+    margin-bottom: 215px;
+  }
+  
+  .card__box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    width: 150px;
+    height: 210px;
+    border-radius: 15px;
+    
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    transition: all .4s ease;
+    background: lightgray;
+    box-shadow:  -4px 8px 8px #999898, -4px 4px 8px #ffffff;
+  }
+  
+  .card__box:hover {
+    background-color: var(--global-primary-color);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transform: translateY(-10px) translateX(10px);
+    box-shadow:  -4px 8px 8px #888888;
+  }
+  
+  .card__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    padding: 5px;
+    margin-top: 5px;
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  .card__icon img{
+    height: 100%;
+    width: 100%;
+  }
+  
+  .icon__header {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  
+  .icon__text {
+    padding-top: 20px;
+    font-family: Verdana;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+  }
+  
+  .icon__text p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+  }
+  
+  
+              /* CARTÕES FAVORITOS */
+  
+  .favorites__section{
+    display: flex;
+    justify-content: left;
+  }
+  
+  .fav__header{
+    margin-left:  200px;
+    margin-bottom: 4px;
+  }
+  
+  .clear-button{
+    cursor: pointer;
+    margin-left: 1vh;
+    margin-top: -1vh;
+    padding: 6px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    border-radius: 15px;
+    color: #3D3D3D;
+    background: #fff;
+    border: none;
+    box-shadow:  -1px 2px 2px #888888;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  .clear-button:hover{
+    background-color: var(--global-lighter-color);
+    cursor: pointer;
+    transform: translateY(-1px) translateX(1px);
+    box-shadow:  -2px 4px 4px #888888;
+    transition: .2s;
+  }
+  
+  .clear__img{
+    width: 2vh;
+    height: auto;
+  }
+  
+  .favorites_cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15vh;
+    padding-right: 15vh;
+  }
+  
+  .card_fav_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    width: 100px;
+    height: 118px;
+    border-radius: 50px;
+   
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    transition: all .4s ease;
+    background: rgba(255, 0, 0, 0.623);
+    box-shadow:  -4px 8px 8px #999898, -4px 4px 8px #ffffff;
+  }
+  
+  .card_fav_box:hover {
+    background-color: red;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transform: translateY(-10px) translateX(10px);
+    box-shadow:  -4px 8px 8px #888888;
+  }
+  
+  .card_fav_title{
+    margin-bottom: 10px;
+    margin-top: -10px;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  
+  .card_fav_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  .card_fav_icon img{
+    height: 100%;
+    width: 100%;
+  }
+  
+  .icon_fav_header {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+  }
+  
+  .icon_fav_text {
+    padding-top: 12px;
+    font-family: Verdana;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+  }
+  
+  .icon_fav_text span {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+
+  .iconloupe{
+    margin-top: 7px;
+    margin-left: 2px;
+    cursor: pointer;
+  }
+              
+  
+  
+  
+              /* SIDEBAR INDEX */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  
+  .menu {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    width: 200px;
+  }
+  
+  .menu>li>a {
+    background: var(--global-primary-color);
+    color: #fff;
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .menu ul {
+    background: #ddd;
+    height: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: all .5s ease;
+    top: 35px;
+    width: 100%;
+  }
+  
+  .menu li:hover ul {
+    height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .menu ul a {
+    color: #000;
+    display: block;
+    padding: 5px 20px;
+  }
+  
+  
+  
+  
+  
+            /* SCROLLBAR INDEX */
+            
+  ::-webkit-scrollbar {
+  width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(77, 216, 13, 0.753); 
+  border-radius: 10px;
+  visibility: hidden;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+  background:  var(--global-secondary-color);
+  border-radius: 10px;
+  
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+  background:  var(--global-primary-color);
+  }
+  
+  
+  
+  /* SMALLER DEVICES */
+  
+  
+  
+    @media screen and (max-width: 900px) {
+  
+      .title--estat{
+        font-size: 25px;
+      }
+  
+      @media screen and (max-width: 500px){
+  
+        .title--estat{
+          font-size: 18px;
+        }
+  
+        .fav__header{
+          margin-top: 5%;
+          margin-left:  30%;
+          margin-bottom: 4px;
+        }
+      }
+    }
+  
