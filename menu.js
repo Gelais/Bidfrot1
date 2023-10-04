@@ -20,3 +20,12 @@ var menuSide = document.querySelector('.menu-lateral')
 btnExp.addEventListener('click', function(){
     menuSide.classList.toggle('expandir')
 })
+
+
+//Bloqueia pag sem login
+
+var usuarioLogado = sessionStorage.getItem('usuarioLogado');
+
+if (!usuarioLogado) {
+    window.location = "login.html"
+}

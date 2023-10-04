@@ -10,14 +10,21 @@
 
 body{
     height: 100vh;
+    background-image: url(imagem/background.png);
+    display: flex;
+}
+.topo{
+    background-color: lightgrey;
+    width: 100vw;
+    height: 53px;
 }
 
 nav.menu-lateral{
-    width: 80px;
+    width: 60px;
     height: 100%;
-    padding: 8px 0 40px 1%;
-    background-color: #202020;
-
+    
+    background-color: lightgrey;
+    
     position: fixed;
     top: 0;
     left: 0;
@@ -26,18 +33,18 @@ nav.menu-lateral{
 }
 
 nav.menu-lateral.expandir{
-    width: 300px ;
+    width: 200px ;
 }
 
 
 .btn-expandir{
     width: 100%;
-    padding: 25px;
+    padding: 35px ;
     margin: -20px -20px
 }
 
 .btn-expandir > i{
-    color: white;
+    color: black;
     font-size: 24px;
     cursor: pointer;
 }
@@ -51,6 +58,10 @@ ul li.item-menu{
     transition: .2s;
 }
 
+ul li.item-sair{
+    transition: .2s;
+}
+
 ul li.ativo{
     background-color: lightcoral;
     margin-top: 5px;
@@ -59,20 +70,46 @@ ul li.ativo{
 
 ul li.item-menu:hover{
     background: lightcoral;
+    text-size-adjust: 1em;
+    
+}
+
+ul li.item-sair:hover{
+    background: lightcoral;
+    text-size-adjust: 1em;
+    
 }
 
 ul li.item-menu a{
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 20px;
-    padding: 20px 4%;
+    padding: 5px 4% ;
     display: flex;
-    margin-bottom: 20px;
-    line-height: 40px;
+    margin-bottom: 10px;
+    line-height: 25px;
+}
+
+ul li.item-sair a{
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 5px 4% ;
+    display: flex;
+    margin-bottom: 10px;
+    line-height: 25px;
+    margin-top: 625px;
 }
 
 ul li.item-menu a .txt-link{
     margin-left: 70px;
+    transition: .5s;
+    opacity: 0;
+}
+
+ul li.item-sair a .txt-link{
+    margin-left: 70px;
+    
     transition: .5s;
     opacity: 0;
 }
@@ -85,6 +122,12 @@ nav.menu-lateral.expandir .txt-link{
 ul li.item-menu a .icon > i{
     font-size: 30px;
     margin-left: 10px;
+}
+
+ul li.item-sair a .icon > i{
+    font-size: 30px;
+    margin-left: 10px;
+    
 }
 /*cssmenu fim*/
 
