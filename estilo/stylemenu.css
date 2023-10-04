@@ -8,6 +8,11 @@
     font-family: 'Outfit', sans-serif;
 }
 
+::-webkit-scrollbar{
+    
+    display: none;
+}
+
 body{
     height: 100vh;
     background-image: url(imagem/background.png);
@@ -22,19 +27,21 @@ body{
 nav.menu-lateral{
     width: 60px;
     height: 100%;
-    
+  display: fixed;
     background-color: lightgrey;
-    
     position: fixed;
+    
     top: 0;
     left: 0;
-    overflow: hidden;
+    
     transition: .3s;
 }
 
 nav.menu-lateral.expandir{
-    width: 200px ;
+    width: 240px ;
 }
+
+
 
 
 .btn-expandir{
@@ -98,13 +105,14 @@ ul li.item-sair a{
     display: flex;
     margin-bottom: 10px;
     line-height: 25px;
-    margin-top: 625px;
+    margin-top: 450px;
 }
 
 ul li.item-menu a .txt-link{
     margin-left: 70px;
     transition: .5s;
     opacity: 0;
+    padding: 10px;
 }
 
 ul li.item-sair a .txt-link{
@@ -130,4 +138,22 @@ ul li.item-sair a .icon > i{
     
 }
 /*cssmenu fim*/
+
+.divframe{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+
+
+.iframe{
+    display:absolute;
+    width: 800px;
+    height: 900px;
+    margin: 60px 0px ;
+}
+
+.icon{
+    margin-left: -1px;
+}
 
